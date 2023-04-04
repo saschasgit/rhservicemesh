@@ -22,7 +22,7 @@ Da es zu jeder CRD zahlreiche Beispiele in der wirklich guten Istio Dokumentatio
 ==== Gateway
 https://istio.io/latest/docs/reference/config/networking/gateway/
 
-Die erste CRD ist eine Ausnahme davon. Das Gateway konfiguriert nicht die Envoy-Proxies, sondern das übergeordnete Istio Gateway.
+Die erste CRD ist eine Ausnahme davon. Das Gateway konfiguriert nicht die anderen Envoy-Proxies. Trotzdem ist auch das Gateway ein eigener Envoy-Proxy.
 
 In der Konfiguration des Gateways werden die URLs angegeben, welche veröffentlich werden sollen. Diese URLs werden dann über das Istio Gateqay in das Mesh geleitet. Für https kann in einer tls Sektion das Zertifikat als pem, crt+key oder als Secret angegeben werden.
 
