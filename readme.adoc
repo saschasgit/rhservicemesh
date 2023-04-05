@@ -49,7 +49,7 @@ Ein wesentlicher Unterschied zur OpenShift Route ist, dass hier nur die Veröffe
 ==== VirtualService
 https://istio.io/latest/docs/reference/config/networking/virtual-service/
 
-Ein VirtualService konfiguriert das Routing des Traffics. In ihm werden die Routingregeln konfiguriert, die angewandt werden, wenn ein Host (über eine URL) aufgerufen wird. Auch hier gibt es detaillierte Konfigurationsmöglichkeiten wie Pfad-basiertes Routing, Timeouts, das Routing für Mesh-externe Services (diese werden über einen "ServiceEntry" hinzugefügt), Delegationen zu anderen VirtualServices, Header-basiertes Routing, URL-rewrite und weitere. Um den Traffic zu routen, der durch eine Gateway-Konfiguration ins Mesh kommt, kann der Gateway im "spec" Abschnitt des VirtualServices angegeben werden.
+Ein VirtualService konfiguriert das Routing des Traffics. In ihm werden die Routingregeln konfiguriert, die angewandt werden, wenn ein Host (über eine URL) aufgerufen wird. Auch hier gibt es detaillierte Konfigurationsmöglichkeiten wie Pfad-basiertes Routing, Timeouts, das Routing für Mesh-externe Services (diese werden über einen "ServiceEntry" hinzugefügt), Delegationen zu anderen VirtualServices, Header-basiertes Routing, URL-rewrite und weitere. Auch lässt sich damit konfigurieren, wie der Traffic zwischen zwei Versionen eines Services prozentual aufgeteilt werden soll, beispielsweise für ein Canary Deployment. Um den Traffic zu routen, der durch eine Gateway-Konfiguration ins Mesh kommt, kann der Gateway im "spec" Abschnitt des VirtualServices angegeben werden.
 
 Die Istio CRDs unterscheiden in der Konfiguration drei Arten von Traffic: http, https und tcp
 
@@ -62,7 +62,7 @@ DestinationsRules sind die Policies, die aktiv werden, nachdem das Routing passi
 
 Ebenso können damit Subsets, welche in einem VirtualService konfiguriert wurde, passend zu den entsprechenden Pods der verschiedenen OpenShift Services zugewiesen werden.
 
-Auch lässt sich damit konfigurieren, wie der Traffic zwischen zwei Services prozentual aufgeteilt werden soll, beispielsweise für ein Canary Deployment. Zudem sind Failover Einstellungen möglich und Weiteres.
+Auch kann über Label ein Load Balancing für einen Serive konfiguriert werden, falls beispielsweise der Service in unterschiedlichen Verfügbarkeitszonen zur Verfügung steht. Zudem sind Failover Einstellungen möglich, StickySessions, Limitierung der Verbindungen und Weiteres.
 
 DestinationRules haben, wie auch die CRD "PeerAuthentication" eine Möglichkeit, den TLS-Modus zu konfigurieren. Der Unterschied zwischen den beiden ist, dass die DestinationRule den Egress der EnvoyProxies konfiguriert und die PeerAuthentication den Ingress.
 
