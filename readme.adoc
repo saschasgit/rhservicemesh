@@ -9,7 +9,23 @@ In diesem Repository befinden sich Erläuterungen zum Red Hat Service Mesh und e
 
 == Aus Applikationssicht
 
-Annotationen (Pod) und Projekt
+Die Bereitstellung der ServiceMesh-Sidecars (Envoy-Proxies) erfolgt über eine Annotation der Pods. Für Jaeger benötigt man eine weitere Annotation im Deployment. Die Annotation wird im überordneten Objekt, beispielsweise dem Deployment, im Template für die Pods gesetzt:
+
+[source,yaml]
+----
+kind: Deployment
+...
+spec:
+    template:
+        annotation:
+            sidecar.istio.io/inject: 'true'
+            sidecar.jaegertracing.io/inject: 'true'
+----
+
+Diese Sidecar-Injection kann beim RedHat ServiceMesh nicht auf Projektebene gesetzt werden, sie kann dort jedoch deaktiviert werden, indem im Projekt die Annotation mit dem Wert 'disabled' eingefügt wird.
+
+Da die Sidecar-Injection über die Annotation bei Istio als "Deprecated" gilt und in Zukunft über ein Label umgesetzt wird (https://istio.io/latest/docs/reference/config/annotations/) wird dies sicherlich auch bald für das RedHat ServiceMesh gelten.
+
 
 === Die verschiedenen CRDs des ServiceMeshs
 
