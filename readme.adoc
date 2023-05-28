@@ -126,7 +126,7 @@ Werden Sidecars sowohl für einen Namespace als auch für einen Workload konfigu
 ==== ProxyConfig
 https://istio.io/latest/docs/reference/config/networking/proxy-config/
 
-Auch über die CRD "ProxyConfig" können die Sidecars genauer konfiguriert werden, jedoch in anderer Hinsicht. Über ProxyConfig können die Konfiguration für das vom Proxy verwendete Image und die für den Proxy verwendeten CPU-Cores konfiguriert werden. Dies kann sowohl für einen kompletten Namespace als auch über Label für einen bestimmten Workload konfiguriert werden. Der Einsatz dieser CRD ist vermutlich sehr selten und speziell.
+Auch über die CRD "ProxyConfig" können die Sidecars genauer konfiguriert werden, jedoch in anderer Hinsicht. Über ProxyConfig können die Konfiguration für das vom Proxy verwendete Image und die für den Proxy verwendeten parallelen Worker-Threads konfiguriert werden. Dies kann sowohl für einen kompletten Namespace als auch über Label für einen bestimmten Workload konfiguriert werden. Der Einsatz dieser CRD ist vermutlich sehr selten und speziell.
 
 ==== EnvoyFilter
 https://istio.io/latest/docs/reference/config/networking/envoy-filter/
